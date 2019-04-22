@@ -48,7 +48,7 @@ export class DemoComponent implements OnInit {
       })
   }
   /**
-  * recive submit event and get target nodes to find out the shortest path form that that target node. 
+  * receive submit event and get target nodes to find out the shortest path form that that target node. 
   */
   getShortestPath(f: NgForm) {
     let SelectectNode = "B";
@@ -69,7 +69,7 @@ export class DemoComponent implements OnInit {
     this.shortestPaths.push(routingNode);
   }
   /**
-  * create and initialize doble diamention Array.
+  * create and initialize double dimensional array.
   */
   initializeTwoDArray(n: number): any {
     let matrix = [];
