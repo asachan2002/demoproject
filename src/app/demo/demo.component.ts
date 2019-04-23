@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {NgForm} from '@angular/forms';
-import {Subscription} from 'rxjs';
-import {PathService} from '../path.service';
+import {Component, OnInit} from "@angular/core";
+import {NgForm} from "@angular/forms";
+import {Subscription} from "rxjs";
+import {PathService} from "../path.service";
 @Component({
   selector: 'app-demo',
   templateUrl: './demo.component.html',
@@ -55,24 +55,24 @@ export class DemoComponent implements OnInit {
    * receive submit event and get target nodes to find out the shortest path form that that target node.
    */
   getShortestPath(pathForm: NgForm) {
-    let SelectectNode = "B";
+    let selectedNode = "B";
     let selectedNodeIndex = -1;
     let routingPath = "";
     if (!pathForm.untouched) {
-      SelectectNode = pathForm.value.selectedOption;
+      selectedNode = pathForm.value.selectedOption;
     }
     let matrix: any = this.drawAdjancyMatrix();
     this.pathService.algorithm(matrix, matrix.length, 0);
     let shortestPath = (this.pathService.shortestPath).split("#");
-    selectedNodeIndex = this.targetNodes.indexOf(SelectectNode);
+    selectedNodeIndex = this.targetNodes.indexOf(selectedNode);
     let traversingNode = shortestPath[selectedNodeIndex + 1].split("*");
     for (let i = 1; i < traversingNode.length; i++) {
       routingPath += "=>" + this.targetNodes[traversingNode[i]] + " ";
     }
     let routingNode = {
-      sourcenode: "A",
-      destinationnode: this.targetNodes[selectedNodeIndex],
-      routingnode: "A " + routingPath,
+      sourceNode: "A",
+      destinationNode: this.targetNodes[selectedNodeIndex],
+      routingNode: "A " + routingPath,
       distance: this.pathService.shortestDistance[selectedNodeIndex]
     };
     this.shortestPaths.push(routingNode);
